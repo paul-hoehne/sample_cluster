@@ -42,6 +42,12 @@ Since you're probably not going to add the names to your DNS, you'll need to inc
 192.168.56.203 node-3.localdomain node-3
 ```
 
+### Download MarkLogic 
+[Download](http://developer.marklogic.com/products) MarkLogic's RPM deployment bundle and copy it to the server.  Don't install it yet.
+
+### (Optional) Copy Your Private Key Up to Each Server
+If you're using SSH, now wuould be a good time to copy up your public key to the server's authorized keys file so that you don't have to log in with your password all the time.  
+
 ### Clone the Virtual Machine
 Then clone the virtual machine by right clicking on the virtual machine and selecting "Clone..." from the drop down menu.  Make sure you check the box to re-initialize the Mac address for the virtual machine.  You should name your nodes Node 1, Node 2, and Node 3.
 
@@ -61,9 +67,17 @@ The only line that differs for the 3 machines is the IPADDR line, and we'll be u
 
 Edit the /etc/hostname file to include the hostname for each host.  192.168.56.201 should contain the line 'node-1.localdomain', 192.168.56.202 should contain 'node-2.localdomain' and 192.168.56.203 should contain 'node-3.localdomain'.  
 
-
 ## Edit Your Hosts File
 This is a setting on your laptop's or desktop's operating system.  (The host machine).  On Mac OS or Linux the file is called /etc/hosts and on Windows it's located under c:\Windows\System32\Drivers\etc\hosts.  (Don't forget to run Notepad as administrator when editing the file.  Add the lines above so that typing "http://node-1.localdomain" in a browser would take you to your first cluster node.
 
 ## Install MarkLogic
-Download MarkLogic 
+On each server run the following commands:
+
+```
+sudo rpm -Uvh MarkLogic-RHEL7-8.0-6.x86_64.rpm
+sudo service MarkLogic start
+```
+
+## Configure
+Proceed to the [first node](http://node-1.localdomain) and configure your MarkLogic done.  Skip the step to add it to the cluster.  This is your first node.  Then go to the [second node](http://node-2.localdomain) and attach it to node-1 by providing filling in the information for node-1.localdomain.  Proceed all the way through the configuration process so that node-2.localdomain is now an attached host to node-1.localdomain.  Then proceed to the [third node](http://node-2.localdomain) and do the same.
+
