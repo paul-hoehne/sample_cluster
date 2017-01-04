@@ -70,6 +70,9 @@ Edit the /etc/hostname file to include the hostname for each host.  192.168.56.2
 ## Edit Your Hosts File
 This is a setting on your laptop's or desktop's operating system.  (The host machine).  On Mac OS or Linux the file is called /etc/hosts and on Windows it's located under c:\Windows\System32\Drivers\etc\hosts.  (Don't forget to run Notepad as administrator when editing the file.  Add the lines above so that typing "http://node-1.localdomain" in a browser would take you to your first cluster node.
 
+## Snapshot the Machines
+Now is a good time to create a VM snapshot so that you can practice re-installing and re-configuring your cluster.  Click on the snapshots tab or button, select the current state and create a snapshot. 
+
 ## Install MarkLogic
 On each server run the following commands:
 
